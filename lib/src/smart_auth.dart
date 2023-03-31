@@ -1,13 +1,15 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:flutter/services.dart';
-import 'package:flutter/foundation.dart';
 
-part 'sms_code_result.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 
 part 'credential.dart';
+part 'sms_code_result.dart';
 
 const _defaultCodeMatcher = '\\d{4,7}';
+
+const _defaultFilterMatcher = '';
 
 class Methods {
   static const getAppSignature = 'getAppSignature';
@@ -58,6 +60,8 @@ class SmartAuth {
   Future<SmsCodeResult> getSmsCode({
     // used to extract code from SMS
     String matcher = _defaultCodeMatcher,
+    // used to filter desired SMS from other SMS
+    String filter = _defaultFilterMatcher,
     // Optional parameter for User Consent API
     String? senderPhoneNumber,
     // if true SMS User Consent API will be used otherwise plugin will use SMS Retriever API
@@ -76,14 +80,14 @@ class SmartAuth {
                 'senderPhoneNumber': senderPhoneNumber,
               })
             : await _channel.invokeMethod(Methods.startSmsRetriever);
-        return SmsCodeResult.fromSms(sms, matcher);
+        return SmsCodeResult.fromSms(sms, matcher, filter);
       }
     } catch (error) {
       debugPrint('Pinput/SmartAuth: getSmsCode failed: $error');
-      return SmsCodeResult.fromSms(null, matcher);
+      return SmsCodeResult.fromSms(null, matcher, filter);
     }
 
-    return SmsCodeResult.fromSms(null, matcher);
+    return SmsCodeResult.fromSms(null, matcher, filter);
   }
 
   /// Removes listener for [getSmsCode]

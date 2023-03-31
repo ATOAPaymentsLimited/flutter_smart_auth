@@ -21,11 +21,14 @@ class SmsCodeResult {
     this.succeed = false,
   });
 
-  factory SmsCodeResult.fromSms(String? sms, String matcher) {
+  factory SmsCodeResult.fromSms(String? sms, String matcher, String filter) {
     String? _extractCode(String? sms) {
       if (sms == null) return null;
 
       try {
+        final filterRegex = RegExp(filter, multiLine: true);
+        final filterMatches = filterRegex.allMatches(sms);
+        if (filterMatches.isEmpty) return null;
         final intRegex = RegExp(matcher, multiLine: true);
         final allMatches = intRegex.allMatches(sms);
         if (allMatches.isNotEmpty) {
