@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:pinput/pinput.dart';
-import 'package:smart_auth/smart_auth.dart';
 
 void main() {
   runApp(const MyApp());
