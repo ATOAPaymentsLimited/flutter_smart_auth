@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 part 'credential.dart';
 part 'sms_code_result.dart';
 
-const _defaultCodeMatcher = '\\d{4,7}';
+const _defaultCodeMatcher = '\\d{4,8}';
 
 const _defaultFilterMatcher = '';
 
@@ -104,7 +104,7 @@ class SmartAuth {
     }
   }
 
-  /// Disposes [getSmsCode] if useUserConsntApi is false listener
+  /// Disposes [getSmsCode] if useUserConsentApi is false listener
   Future<bool> removeSmsRetrieverListener() async {
     try {
       if (_isAndroid('removeSmsRetrieverListener')) {
@@ -117,7 +117,7 @@ class SmartAuth {
     return false;
   }
 
-  /// Disposes [getSmsCode] if useUserConsntApi is true listener
+  /// Disposes [getSmsCode] if useUserConsentApi is true listener
   Future<bool> removeSmsUserConsentListener() async {
     try {
       if (_isAndroid('removeSmsUserConsentListener')) {
@@ -187,7 +187,7 @@ class SmartAuth {
   }
 
   /// Tries to suggest a zero-click sign-in account. Only call this if your app does not currently know who is signed in.
-  /// If zero-click suggestion fails app show dialog of credentials to chooze from
+  /// If zero-click suggestion fails app show dialog of credentials to choose from
   /// More about this https://developers.google.com/android/reference/com/google/android/gms/auth/api/credentials/CredentialsApi?hl=en#save(com.google.android.gms.common.api.GoogleApiClient,%20com.google.android.gms.auth.api.credentials.Credential)
   Future<Credential?> getCredential({
     // Identifier url, should be you App's website url

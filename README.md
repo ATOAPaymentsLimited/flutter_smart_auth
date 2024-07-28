@@ -16,7 +16,7 @@
 <!--  Donations -->
 
 [![Pub package](https://img.shields.io/pub/v/smart_auth.svg)](https://pub.dev/packages/smart_auth)
-[![Github starts](https://img.shields.io/github/stars/tkko/flutter_smart_auth.svg?style=flat&logo=github&colorB=deeppink&label=stars)](https://github.com/tkko/flutter_smart_auth)
+[![GitHub starts](https://img.shields.io/github/stars/tkko/flutter_smart_auth.svg?style=flat&logo=github&colorB=deeppink&label=stars)](https://github.com/tkko/flutter_smart_auth)
 [![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://github.com/tenhobi/effective_dart)
 [![pub package](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 
@@ -52,9 +52,18 @@ Discord [Channel](https://rebrand.ly/qwc3s0d)
 
 Don't forget to give it a star ⭐
 
-## Demo
-
 ## Getting Started
+
+We should set project kotlin version to 1.8.0 or above because of the new requirement for sdk 34 `RECEIVER_EXPORTED`. Or we would get **duplicate class** error in different kotlin versions.
+
+so in the android level `build.gradle` file update the kotlin version like below:
+```
+// android/build.gradle
+
+buildscript {
+    ext.kotlin_version = '1.8.0'
+}
+```
 
 Create instance of SmartAuth
 

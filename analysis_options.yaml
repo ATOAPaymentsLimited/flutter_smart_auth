@@ -1,8 +1,6 @@
 include: package:flutter_lints/flutter.yaml
 
 analyzer:
-  strong-mode:
-    implicit-dynamic: true
   errors:
     missing_required_param: warning
     missing_return: warning
@@ -22,7 +20,6 @@ linter:
     constant_identifier_names: true
     one_member_abstracts: true
     slash_for_doc_comments: true
-    unnecessary_brace_in_string_interps: true
     cancel_subscriptions: true
     close_sinks: true
     unnecessary_const: true
